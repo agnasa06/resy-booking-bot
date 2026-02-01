@@ -85,7 +85,7 @@ object ResyApi extends Logging {
     val url =
       s"https://$baseUrl?${stringifyQueryParams(queryParams)}"
 
-    logger.debug(s"URL Request: $url")
+    logger.info(s"URL Request: $url")
 
     ws.url(url)
       .withHttpHeaders(createHeaders(resyKeys): _*)
@@ -101,8 +101,8 @@ object ResyApi extends Logging {
     val url  = s"https://$baseUrl"
     val post = stringifyQueryParams(queryParams)
 
-    logger.debug(s"URL Request: $url")
-    logger.debug(s"Post Params: $post")
+    logger.info(s"URL Request: $url")
+    logger.info(s"Post Params: $post")
 
     ws.url(url)
       .withHttpHeaders(
@@ -119,7 +119,8 @@ object ResyApi extends Logging {
   private[this] def createHeaders(resyKeys: ResyKeys): Seq[(String, String)] = {
     Seq(
       "Authorization"     -> s"""ResyAPI api_key="${resyKeys.apiKey}"""",
-      "x-resy-auth-token" -> resyKeys.authToken
+      "x-resy-auth-token" -> resyKeys.authToken,
+      "User-Agent" -> "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
     )
   }
 

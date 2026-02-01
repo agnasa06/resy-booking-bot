@@ -67,7 +67,7 @@ class ResyClient(resyApi: ResyApi) extends Logging {
         atMost    = 5 seconds
       )
 
-      logger.debug(s"URL Response: $response")
+      logger.info(s"URL Response: $response")
 
       val resDetails = Json.parse(response)
 
@@ -116,7 +116,7 @@ class ResyClient(resyApi: ResyApi) extends Logging {
         atMost    = 10 seconds
       )
 
-      logger.debug(s"URL Response: $response")
+      logger.info(s"URL Response: $response")
 
       // Searching this JSON structure...
       // {"resy_token": "RESY_TOKEN", ...}
@@ -155,7 +155,7 @@ class ResyClient(resyApi: ResyApi) extends Logging {
         atMost    = 5 seconds
       )
 
-      logger.debug(s"URL Response: $response")
+      logger.info(s"URL Response: $response")
 
       // Searching this JSON list structure...
       // {"results": {"venues": [{"slots": [{...}, {...}]}]}}
